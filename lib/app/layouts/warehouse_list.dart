@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Configs/app_settings.dart';
+import '../datas/dummydata.dart';
+import 'warehouse_management.dart';
 
 class WareHouseListPage extends StatelessWidget {
-
+  final List<Map<String, dynamic>> allproducts = warehouseList;
   @override
   Widget build(BuildContext context) {
     double _w = MediaQuery.of(context).size.width;
@@ -51,7 +53,7 @@ class WareHouseListPage extends StatelessWidget {
                 ),
                 child: ListView.builder(
                   physics: BouncingScrollPhysics(),
-                  itemCount: 10,
+                  itemCount: allproducts.length,
                     itemBuilder: (_,index){
                       return Padding(
                         padding: EdgeInsets.only(bottom: 5),
@@ -63,7 +65,7 @@ class WareHouseListPage extends StatelessWidget {
                             ),
                             child: InkWell(
                               onTap: (){
-                                //Get.to(()=>PostPage(),arguments: categoryController.model[index].id);
+                                Get.to(()=>WareHouseManagement());
                               },
                               highlightColor: Colors.transparent,
                               splashColor: Colors.transparent,
@@ -74,7 +76,7 @@ class WareHouseListPage extends StatelessWidget {
                                 width: _w,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                    color: Color(0xffEDECEA),
+                                    color: Colors.white.withOpacity(.4),
                                     borderRadius: BorderRadius.circular(20)
                                 ),
                                 child: Row(
@@ -83,7 +85,7 @@ class WareHouseListPage extends StatelessWidget {
                                     CircleAvatar(
                                       backgroundColor: Colors.blue.withOpacity(.1),
                                       radius: _w/15,
-                                      child: FlutterLogo(size: 30,),
+                                      child: Text(allproducts[index]['warehouse_name'][0],style: TextStyle(color: Colors.black),),
                                     ),
                                     Container(
                                       alignment: Alignment.centerLeft,
@@ -92,13 +94,13 @@ class WareHouseListPage extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text('Light Warehouse',
+                                          Text(allproducts[index]['warehouse_name'],
                                             textScaleFactor: 1.6,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.black.withOpacity(.7)
                                             ),),
-                                          Text('512,Jatrabari Dhaka',
+                                          Text("Production: "+allproducts[index]['production'],
                                             textScaleFactor: 1.2,
                                             style: TextStyle(
                                                 fontSize: 12,

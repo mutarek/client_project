@@ -1,7 +1,10 @@
 import 'package:client_project/app/Configs/app_settings.dart';
+import 'package:client_project/app/layouts/admin_dashboard.dart';
 import 'package:client_project/app/layouts/auths/signup.dart';
+import 'package:client_project/app/layouts/profile_page.dart';
 import 'package:client_project/app/layouts/transport_page.dart';
 import 'package:client_project/app/layouts/warehouse_list.dart';
+import 'package:client_project/app/layouts/warehouse_management.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,10 +18,15 @@ class HomePage extends StatelessWidget {
         title: Text(AppSetting.appName),
         centerTitle: true,
         actions: [
-          CircleAvatar(
-            radius: 20, //radius is 50
-            backgroundImage: NetworkImage(
-                'https://cimages1.touristlink.com/repository/member/218021/tarek_edit_5701.jpg'), //image url
+          InkWell(
+            onTap: (){
+              Get.to(()=>ProfilePage());
+            },
+            child: CircleAvatar(
+              radius: 20, //radius is 50
+              backgroundImage: NetworkImage(
+                  'https://cimages1.touristlink.com/repository/member/218021/tarek_edit_5701.jpg'), //image url
+            ),
           ),
           SizedBox(
             width: 15,
@@ -144,6 +152,9 @@ class HomePage extends StatelessWidget {
               Card(
                 elevation: 5,
                 child: ListTile(
+                  onTap: (){
+                    Get.back();
+                  },
                   title: Text(
                     'Home',
                     textScaleFactor: 1.2,
@@ -151,6 +162,22 @@ class HomePage extends StatelessWidget {
                   trailing: Icon(Icons.arrow_forward_rounded),
                   leading: CircleAvatar(
                     child: Text('H'),
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 5,
+                child: ListTile(
+                  onTap: (){
+                    Get.to(()=>DashboardScreen());
+                  },
+                  title: Text(
+                    'Admin',
+                    textScaleFactor: 1.2,
+                  ),
+                  trailing: Icon(Icons.arrow_forward_rounded),
+                  leading: CircleAvatar(
+                    child: Text('A'),
                   ),
                 ),
               ),
@@ -202,6 +229,9 @@ class HomePage extends StatelessWidget {
               Card(
                 elevation: 5,
                 child: ListTile(
+                  onTap: (){
+                    Get.to(()=>WareHouseManagement());
+                  },
                   title: Text(
                     'W-Management',
                     textScaleFactor: 1.2,
