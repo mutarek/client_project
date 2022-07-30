@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1034153096101",
+    "project_id": "rentstorage-60bec",
+    "storage_bucket": "rentstorage-60bec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034153096101:android:670aaf11f12524e8baae4c",
+        "android_client_info": {
+          "package_name": "com.example.client_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034153096101-cl70nri0q7h81einps5uvqtn5fuvlt2j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARqdw2F021rHdBGK43e3QTiRDkCK2EcAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034153096101-cl70nri0q7h81einps5uvqtn5fuvlt2j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

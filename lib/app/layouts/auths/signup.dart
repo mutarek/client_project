@@ -1,6 +1,9 @@
+import 'package:client_project/app/layouts/home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 import '../../Configs/appcolors.dart';
 
@@ -22,10 +25,31 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
   TextEditingController();
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+              (Route<dynamic> route) => false,
+        );
+      }
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return isLoading?Center(
+      child: CircularProgressIndicator(),
+    ):Center(
         child: Container(
           padding: EdgeInsets.only(top: 30.0),
           child: Column(
@@ -197,7 +221,38 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                               ),
                               onPressed: () {
-                                Navigator.pop(context);
+                                if(nameController.text.isEmpty || emailController.text.isEmpty || passwordController.text.isEmpty){
+                                  Get.snackbar(
+                                      'Empty Field', 'All fields are required',
+                                      snackPosition: SnackPosition.BOTTOM);
+                                }
+                                else
+                                {
+                                  setState(() async {
+                                    try {
+                                      isLoading = true;
+                                      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                          email: emailController.text.toString(),
+                                          password: passwordController.text.toString()
+                                      );
+                                      Get.to(()=> HomePage());
+                                    } on FirebaseAuthException catch (e) {
+                                      if (e.code == 'weak-password') {
+                                        Get.snackbar(
+                                            'Password ', 'Week Password',
+                                            snackPosition: SnackPosition.BOTTOM);
+                                      } else if (e.code == 'email-already-in-use') {
+                                        Get.snackbar(
+                                            'Exist', 'User is already exist',
+                                            snackPosition: SnackPosition.BOTTOM);
+                                      }
+                                    } catch (e) {
+                                      Get.snackbar(
+                                          e.toString(), e.toString(),
+                                          snackPosition: SnackPosition.BOTTOM);
+                                    }
+                                  });
+                                }
                               },
                             ),
                           )

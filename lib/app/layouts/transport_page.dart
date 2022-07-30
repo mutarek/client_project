@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
 import '../Configs/app_settings.dart';
+import 'booking_page.dart';
 
 class TransportPage extends StatelessWidget {
 
@@ -181,7 +183,7 @@ class TransportPage extends StatelessWidget {
                             onTap: () {},
                             child: ElevatedButton(
                               onPressed: (){
-
+                                Get.to(()=> BookingPage());
                               },
                               child: Text('Book'),
                             )
@@ -274,7 +276,7 @@ class TransportPage extends StatelessWidget {
                             onTap: () {},
                             child: ElevatedButton(
                               onPressed: (){
-
+                                Get.to(()=> BookingPage());
                               },
                               child: Text('Book'),
                             )

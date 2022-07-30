@@ -50,22 +50,103 @@ class DashboardScreen extends StatelessWidget {
           child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SfCircularChart(
-                      series: <CircularSeries>[
-                        // Render pie chart
-                        PieSeries<ChartData, String>(
-                            dataSource: chartData,
-                            pointColorMapper: (ChartData data, _) => data.color,
-                            xValueMapper: (ChartData data, _) => data.x,
-                            yValueMapper: (ChartData data, _) => data.y
-                        )
-                      ]
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  // SfCircularChart(
+                  //     series: <CircularSeries>[
+                  //       // Render pie chart
+                  //       PieSeries<ChartData, String>(
+                  //           dataSource: chartData,
+                  //           pointColorMapper: (ChartData data, _) => data.color,
+                  //           xValueMapper: (ChartData data, _) => data.x,
+                  //           yValueMapper: (ChartData data, _) => data.y
+                  //       )
+                  //     ]
+                  // ),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
+                  // Container(
+                  //   height: 100,
+                  //   width: double.infinity,
+                  //   child: Row(
+                  //     children: [
+                  //       Expanded(
+                  //         flex: 1,
+                  //         child: Card(
+                  //           child: Container(
+                  //             child: Column(
+                  //               mainAxisAlignment: MainAxisAlignment.center,
+                  //               children: [
+                  //                 Icon(Icons.store_mall_directory),
+                  //                 Text('Storage')
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Expanded(
+                  //         flex: 1,
+                  //         child: Card(
+                  //           child: Container(
+                  //             child: Column(
+                  //               mainAxisAlignment: MainAxisAlignment.center,
+                  //               children: [
+                  //                 Icon(Icons.emoji_transportation,color: Colors.green,),
+                  //                 Text('Trucks',style: TextStyle(color: Colors.green),)
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Expanded(
+                  //         flex: 1,
+                  //         child: Card(
+                  //           child: Container(
+                  //             child: Column(
+                  //               mainAxisAlignment: MainAxisAlignment.center,
+                  //               children: [
+                  //                 Icon(Icons.verified_user_sharp),
+                  //                 Text('Users')
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Expanded(
+                  //         flex: 1,
+                  //         child: Card(
+                  //           child: Container(
+                  //             child: Container(
+                  //               child: Column(
+                  //                 mainAxisAlignment: MainAxisAlignment.center,
+                  //                 children: [
+                  //                   Icon(Icons.person,color: Colors.red,),
+                  //                   Text('Blocked',style: TextStyle(color: Colors.red),)
+                  //                 ],
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
+                  // SfCartesianChart(
+                  //     primaryXAxis: CategoryAxis(),
+                  //     primaryYAxis: NumericAxis(minimum: 0, maximum: 40, interval: 10),
+                  //     tooltipBehavior: _tooltip,
+                  //     series: <ChartSeries<_ChartData, String>>[
+                  //       ColumnSeries<_ChartData, String>(
+                  //           dataSource: data,
+                  //           xValueMapper: (_ChartData data, _) => data.x,
+                  //           yValueMapper: (_ChartData data, _) => data.y,
+                  //           name: 'Gold',
+                  //           color: Color.fromRGBO(8, 142, 255, 1))
+                  //     ])
                   Container(
-                    height: 100,
+                    height: 150,
                     width: double.infinity,
                     child: Row(
                       children: [
@@ -73,12 +154,9 @@ class DashboardScreen extends StatelessWidget {
                           flex: 1,
                           child: Card(
                             child: Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.store_mall_directory),
-                                  Text('Storage')
-                                ],
+                              height: 130,
+                              child: Center(
+                                child: Text('Manage User'),
                               ),
                             ),
                           ),
@@ -87,12 +165,28 @@ class DashboardScreen extends StatelessWidget {
                           flex: 1,
                           child: Card(
                             child: Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.emoji_transportation,color: Colors.green,),
-                                  Text('Trucks',style: TextStyle(color: Colors.green),)
-                                ],
+                              height: 130,
+                              child: Center(
+                                child: Text('Renting Service'),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 150,
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Card(
+                            child: Container(
+                              height: 130,
+                              child: Center(
+                                child: Text('Manage Transport'),
                               ),
                             ),
                           ),
@@ -101,28 +195,28 @@ class DashboardScreen extends StatelessWidget {
                           flex: 1,
                           child: Card(
                             child: Container(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.verified_user_sharp),
-                                  Text('Users')
-                                ],
+                              height: 130,
+                              child: Center(
+                                child: Text('Warehouse Service'),
                               ),
                             ),
                           ),
-                        ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 150,
+                    width: double.infinity,
+                    child: Row(
+                      children: [
                         Expanded(
                           flex: 1,
                           child: Card(
                             child: Container(
-                              child: Container(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.person,color: Colors.red,),
-                                    Text('Blocked',style: TextStyle(color: Colors.red),)
-                                  ],
-                                ),
+                              height: 130,
+                              child: Center(
+                                child: Text('Manage Ads'),
                               ),
                             ),
                           ),
@@ -130,21 +224,6 @@ class DashboardScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  SfCartesianChart(
-                      primaryXAxis: CategoryAxis(),
-                      primaryYAxis: NumericAxis(minimum: 0, maximum: 40, interval: 10),
-                      tooltipBehavior: _tooltip,
-                      series: <ChartSeries<_ChartData, String>>[
-                        ColumnSeries<_ChartData, String>(
-                            dataSource: data,
-                            xValueMapper: (_ChartData data, _) => data.x,
-                            yValueMapper: (_ChartData data, _) => data.y,
-                            name: 'Gold',
-                            color: Color.fromRGBO(8, 142, 255, 1))
-                      ])
                 ],
               )
           ),

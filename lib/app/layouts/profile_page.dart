@@ -54,7 +54,7 @@ class ProfilePage extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomLeft,
-                child: Text('My Storage:',style: TextStyle(fontSize: 25),),
+                child: Text('My Ads:',style: TextStyle(fontSize: 25),),
               ),
               Card(
                 elevation: 5,

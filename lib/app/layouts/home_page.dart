@@ -1,7 +1,10 @@
 import 'package:client_project/app/Configs/app_settings.dart';
 import 'package:client_project/app/layouts/admin_dashboard.dart';
 import 'package:client_project/app/layouts/auths/signup.dart';
+import 'package:client_project/app/layouts/booking_page.dart';
+import 'package:client_project/app/layouts/contactpage.dart';
 import 'package:client_project/app/layouts/profile_page.dart';
+import 'package:client_project/app/layouts/storage.dart';
 import 'package:client_project/app/layouts/transport_page.dart';
 import 'package:client_project/app/layouts/warehouse_list.dart';
 import 'package:client_project/app/layouts/warehouse_management.dart';
@@ -200,6 +203,9 @@ class HomePage extends StatelessWidget {
               Card(
                 elevation: 5,
                 child: ListTile(
+                  onTap: (){
+                    Get.to(()=>Storage());
+                  },
                   title: Text(
                     'Storage',
                     textScaleFactor: 1.2,
@@ -261,6 +267,9 @@ class HomePage extends StatelessWidget {
               Card(
                 elevation: 5,
                 child: ListTile(
+                  onTap: (){
+                    Get.to(()=> ContactPage());
+                  },
                   title: Text(
                     'Contact',
                     textScaleFactor: 1.2,
@@ -424,7 +433,12 @@ class HomePage extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {},
-                            child: Icon(Icons.favorite_border),
+                            child: ElevatedButton(
+                              onPressed: (){
+                                Get.to(()=> BookingPage());
+                              },
+                              child: Text('Book'),
+                            )
                           )
                         ],
                       ),
@@ -505,7 +519,12 @@ class HomePage extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {},
-                            child: Icon(Icons.favorite_border),
+                            child: ElevatedButton(
+                              onPressed: (){
+                                Get.to(()=> BookingPage());
+                              },
+                              child: Text('Book'),
+                            )
                           )
                         ],
                       ),
